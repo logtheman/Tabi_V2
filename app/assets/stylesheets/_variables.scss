@@ -1,0 +1,61 @@
+// colors
+
+$main-text: #7f8c97; // main text
+$link: #acb7c0; // anchor tags
+$background: #e9f0f5; // body background color
+
+$color-1: #303e49; // blue dark
+$color-2: #c03b44; // red
+$color-3: #ffffff; // white
+$food-color: rgba(117,206,102, 0.5); //#75ce66 green
+$food-color-hover: rgba(117,206,102, 0.2); //#75ce66 green
+$food-border-color: #4DB810; 
+$lodging-color: rgba(159,225,231, 0.5); // #9FE1E7;
+$lodging-color-hover: rgba(159,225,231, 0.2); // #9FE1E7;
+$lodging-border-color: #0BBCB2;
+$flight-color: rgba(250,87,60, 0.5); // #FA573C;
+$flight-color-hover: rgba(250,87,60, 0.2); // #FA573C;
+$flight-border-color: #d73532; //#d73532
+$activity-color: rgba(255,173,70, 0.5); // #FFAD46;
+$activity-color-hover: rgba(255,173,70, 0.2); // #FFAD46;
+$activity-border-color: #d68c2f;
+$activity-name-color: #45494f;
+$add-activity-color: #e0e0e0;
+$add-activity-color-hover: #efefef;
+$add-activity-border: rgba(177,191,202, 0.8); //#B1BFCA
+$add-activity-background: rgba(227,242,253, 0.2); //#e3f2fd
+$transportion-color: #9b9b9b;
+
+$form-label-color: #212121;
+$form-background-color: white;   //#64b5f6;  // #fffff9; // #e2f1f8;
+$form-header-background-color: #b0bec5;
+$form-highlight-color: #1a237e;
+$form-input-color: #e2f1f8;
+$multi-leg-flight: #e0e0eb;
+$selected-flight-row: rgba(255,173,70, 0.2); 
+
+//icon sizing variables
+$icon-size: 50px;
+$icon-offset: 20px;
+$timeline-offset: 42px;
+$activity-min-height: 60px;
+$activity-spacer-height: 2px;
+$activity-font-size: 1.1em;
+
+// Sizing
+$small-size: 500px;
+$medium-size: 800px;
+$large-size: 1000px;
+
+$navbar-height: 65px;
+$activity-buttons-height: 90px;
+$timeline-row-height: 120px;
+
+$transportation-container-width: 300px;
+$transportation-container-border: rgba(227,242,253, 0.5);
+
+
+// fonts 
+
+$primary-font: 'Droid Serif', serif;
+$secondary-font: 'Open Sans', sans-serif;

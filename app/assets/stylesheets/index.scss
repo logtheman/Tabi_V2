@@ -1,0 +1,645 @@
+@import 'variables'; // colors, fonts etc...
+@import 'bourbon'; // http://bourbon.io/
+// @import 'mixins'; // custom mixins
+@import 'layouts'; // responsive grid and media queries
+
+html{
+
+	background-color: white;
+	// font-family: 'Nunito Sans', sans-serif;
+	// font-family: 'Libre Franklin', sans-serif;
+	// font-family: 'BioRhyme', serif;
+
+}
+
+*, *:after, *:before {
+	@include box-sizing(border-box);
+}
+
+body {
+	font-size: 0.65em;
+	.list-inline{
+		margin: 0;
+
+	}
+
+}
+
+// Navigation links 
+
+.navbar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: $navbar-height;
+	z-index: 100;
+	border-radius: 0;
+	background-color: #61747e;
+	box-shadow: 0px 2px 8px 1px rgba(94,94,94,0.19);
+	padding: 0px;
+
+
+	.nav-links{
+		font-size: 0.8rem;
+		a{
+			color: white;
+			text-shadow: 1.0px 1px 0 black;
+			&:hover{
+				color: lightblue;
+				text-shadow: 1.5px 1px 0 black;
+			}
+			&.active{
+				color: lightblue;
+			}
+		}
+
+		.title-header{
+			color:white;
+			text-shadow: 1px 0 0 black;
+			font-size: 3em;
+		}
+		.tagline{
+			color: #bfd4df;
+
+		}
+	}
+
+	@media(min-width: 500px){
+		font-size: 0.8rem;
+
+	}
+
+}
+
+.navbar-padding{
+	padding-bottom: $navbar-height;
+}
+
+// Opening banner, title and entry point
+.banner{
+	background-image: url('banner1_black_white.jpg'); 
+	background-repeat:no-repeat;
+	background-size:auto auto;
+	background-position: center; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+	// background-size: 100% 100%;
+	// min-height: 800px;
+
+
+
+	.open-title{
+		font-size: 6em;
+		color:black;
+	}
+
+	.travel-date-inputs{
+		text-align:center
+	}
+
+
+
+	.text-shadow{
+		text-shadow: 1.5px 1px 0 white;
+	}
+	.trip-dates{
+		font-size: 2em;
+
+		button{
+			border-radius: 5px;
+		}
+	}
+}
+
+
+.button-container{
+		.new-trip, .edit-trip, .explore-trips{
+			border-radius: 2px;;
+			height: 3em;
+			background-color: white;
+		}
+
+		.new-trip, .lodging{
+			color: $lodging-border-color;
+			border-color: $lodging-border-color;
+			&:hover{
+				color: black;
+				background-color: $lodging-color;
+			}
+		}
+		.edit-trip, .food{
+			color: $food-border-color;
+			border-color: $food-border-color;
+			&:hover{
+				color: black;
+				background-color: $food-color;
+			}
+		}
+
+}
+
+@media(min-width: 900px){
+
+
+}
+
+
+/********************** Single Day Container ****************************************/
+
+.single-day-container{
+	background-color: white;
+	min-height: 400px;
+	padding-left: 10px;
+
+	.bottom-border{
+		border-bottom: 1px solid #777;
+	}
+
+	.icon-offset{
+		padding-left: $icon-offset + $icon-size;
+	}
+
+	.timeline-header{
+		padding: {
+			top: 5px;
+			left: 2.5em;
+			bottom: 0px;
+		}
+	}
+
+	.timeline {
+	  position: relative;
+	  padding: 2em 0;
+
+
+	  .activity-name{
+	  	font-weight: 500;
+	  	color: $activity-name-color;
+	  	font-size: 1.2em;
+	  }
+
+	  .activity-time{
+	  	font-weight: bold;
+	  	color: black;
+	  	font-size: 1.1em;
+
+	  }
+
+	  &::before {
+	  	/* this is the vertical line */
+	  	content: '';
+	  	position: absolute;
+	  	top: 0;
+	  	left: $timeline-offset;
+	  	height: 100%;
+	  	width: 4px;
+	  	background: darken($background, 5%);
+	  }
+	  a{
+	  	color: black;
+	  	&:hover{
+	  		text-decoration: underline;
+	  	}
+	  }
+
+	  .timeline-row{
+	  	min-height: $timeline-row-height;
+	  }
+
+	  .food{	  	
+	  	background-color: $food-color;
+	  	border-bottom: 1.5px solid $food-border-color;
+	  	border-top: 1px solid $food-border-color;
+	  	padding-top: 8px;
+	  	&:hover{
+	  		background-color: $food-color-hover;
+	  	}	
+	  }
+
+	  .flight{
+	  	background-color: $flight-color;
+	  	border-bottom: 1.5px solid $flight-border-color;
+	  	border-top: 1px solid $flight-border-color;
+	  	// padding-top: 1em;
+	  	padding-top: 8px;
+
+	  	&:hover{
+	  		background-color: $flight-color-hover;
+	  	}	
+	  }
+
+	  .lodging{
+	  	background-color: $lodging-color;
+	  	border-bottom: 1.5px solid $lodging-border-color;
+	  	border-top: 1px solid $lodging-border-color;
+	  	padding-top: 0;
+	  	padding-bottom: 1em;
+	  	&:hover{
+	  		background-color: $lodging-color-hover;
+	  	}	
+	  }
+
+	  .activity{
+	  	background-color: $activity-color;
+	  	border-bottom: 1.5px solid $activity-border-color;
+	  	border-top: 1px solid $activity-border-color;
+	  	padding-top: 8px;
+
+	  	// padding-top: 1em;
+	  	&:hover{
+	  		background-color: $activity-color-hover;
+	  	}	
+	  }
+
+
+
+	}
+
+	.timeline-block {
+		position: relative;
+		margin: 2em 0;
+		font-size: $activity-font-size;
+
+		&.activity, &.lodging, &.flight, &.food{
+			min-height: $activity-min-height;
+			padding-top: 5px;
+
+		}
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@include MQ(L) {
+			margin: 4em 0;
+
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.timeline-content {
+		position: relative;
+		margin-left: $timeline-offset * 2;
+		
+		.row:first-child{
+			padding-left: 1em;
+		}
+
+	}
+
+
+	.timeline-activity-marker{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: $icon-size;
+		height: $icon-size;
+		margin-left: $icon-offset;
+		border-radius: 50%;
+		// border: 1px solid rgba(#fff, .5);
+		box-shadow: 0 0 0 4px white, inset 0 3px 0 rgba(#000, .08), 0 3px 0 4px rgba(#000, .10) ;
+	  z-index: 5;
+
+		i {
+
+			margin-left: 14px;
+			margin-top: 5px;
+			position: relative;
+			text-shadow: 0.5px 1px 0 grey;
+			color: white;
+
+		}
+
+		&.food {
+			background: $food-border-color;
+		}
+		&.flight {
+			background: $flight-border-color;
+			font-size: 1.3em;
+			i {
+				margin-left: 13px;	
+			}
+		}
+		&.activity {
+			background: $activity-border-color;
+			font-size: 1.3em;
+			i {
+				margin-left: 16px;	
+			}
+		}
+		&.lodging {
+			background: $lodging-border-color;
+			color: white;
+			top: 10px;
+			i {
+				margin-left: 13px;	
+				margin-top: 12px;
+			}
+		}
+
+	}
+
+
+
+	.day-header{
+		font-size: 1.5em;
+		color: #445;
+		border-bottom: 1px solid #CCC;
+		-webkit-box-shadow: 0px 2px 8px 1px rgba(94,94,94,0.19);
+		-moz-box-shadow: 0px 2px 8px 1px rgba(94,94,94,0.19);
+		box-shadow: 0px 2px 8px 1px rgba(94,94,94,0.19);
+		text-shadow: 0.5px 0.5px 0 grey;
+		.change-day{
+			.icon{
+				color: #eee;
+				text-shadow: 0.5px 0px 1 black;
+				&:hover{
+					color: #CCC;
+					text-shadow: 1.5px 1px 0 black;
+				}
+			}
+
+		}
+
+	}
+
+
+
+	@media(min-width: 900px){
+		.day-header {
+			font-size: 2.2em;
+		}
+
+	}
+
+}
+
+/********************** Single Day Map Styles ****************************************/
+
+
+	.map-column{
+		min-height: 500px;
+		transition-property: margin;
+		transition-duration: 0.2s;
+		// transition-delay: 0.1s;
+		transition-timing-function: linear;
+
+		.add-activity-buttons{
+			border: 2px solid $add-activity-border;
+			background-color: $add-activity-background;
+			border-radius: 10px;
+			margin: 1em;
+			// position: fixed;
+			// top: $navbar-height;
+			// right: 0;
+			// z-index: 5;
+		}
+
+		@media(min-width: 900px){
+
+		}
+		.single-day-map{
+			height: 60%;
+			// margin-top: $activity-buttons-height + 20;
+			margin-right: 10px;
+			margin-left: 10px;
+			border: 1px solid black;
+			// min-height: 500px - $navbar-height - 20;
+
+		}
+
+	}
+
+
+/********************** Form Styles ****************************************/
+
+form{
+	.highlight{
+		color: $form-highlight-color;
+		font-size: 0.9em;
+	}
+	input{
+		background-color: $form-input-color;
+		line-height: 32px;
+		padding-left: 10px;
+		padding-right: 10px;
+		max-width: 100%;
+		font-size: 0.85em;
+		border-color: rgba(217,217,217, 0.2);
+		border-radius: 4px;
+		// border: 0px;
+	}
+	.Select-control{
+		background-color: $form-input-color;
+	}
+	.input-colored{
+		background-color: $form-input-color;
+	}
+	.optional-label{
+		font-size: 0.8em;
+		color: grey;
+	}
+}
+
+.btn, .btn-group{
+	.active{
+		z-index: inherit;
+	}
+	z-index: 0;
+}
+
+.modal-dialog{
+	max-width: 90%;
+	max-height: 90%;
+	overflow: auto;
+	box-shadow: 0px 19px 43px -3px rgba(0,0,0,0.56);
+	.modal-content{
+		border: none;
+		background-color: $form-background-color;
+
+	}
+	.modal-header{
+		min-height: 40px;
+		box-shadow: 0px 4px 14px -9px rgba(0,0,0,0.56);
+		padding-top: 0px;
+		// background-color: white;
+
+
+	}
+	.close-button{
+		border-radius: 0;
+		border: none;
+		font-size: 1.8em;
+		float: right;
+		padding-right: 10px;
+		max-height: 10px;
+
+		background-color: rgba(0,0,0, 0);
+		&:hover{
+			color: red;
+		}
+	}
+
+	table{
+		background-color: white;
+		thead{
+			border-bottom: 1px solid black;
+		}
+	}
+
+	@media(min-width: 900px){
+		max-width: 70%;
+	}
+}
+
+.form-group{
+
+	font-size: 1.6em;
+	font-weight: 500;
+	label{
+		color: $form-label-color;
+
+	}
+
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+  padding: 50;
+  z-index: 100;
+};
+
+
+.newTripHeader{
+	h2{
+		font-family: 'Nunito Sans', sans-serif;
+		color: black;
+	}
+
+}
+
+/**
+ * The geosuggest module
+ * NOTE: duplicated font-sizes' are for browsers which don't support rem (only IE 8)
+ */
+.geosuggest {
+  font-size: 18px;
+  font-size: 1rem;
+  position: relative;
+  // width: 50%;
+  // margin: 1em auto;
+  text-align: left;
+}
+.geosuggest__input {
+  // width: 100%;
+  // border: 2px solid transparent;
+  // box-shadow: 0 0 1px #3d464d;
+  // padding: .5em 1em;
+  // -webkit-transition: border 0.2s, box-shadow 0.2s;
+  //         transition: border 0.2s, box-shadow 0.2s;
+}
+.geosuggest__input:focus {
+  border-color: #267dc0;
+  box-shadow: 0 0 0 transparent;
+}
+.geosuggest__suggests {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 25em;
+  padding: 0;
+  margin-top: -1px;
+  background: #fff;
+  border: 2px solid #267dc0;
+  border-top-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  z-index: 5;
+  -webkit-transition: max-height 0.2s, border 0.2s;
+          transition: max-height 0.2s, border 0.2s;
+}
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+}
+
+/**
+ * A geosuggest item
+ */
+.geosuggest__item {
+  font-size: 18px;
+  font-size: 1rem;
+  padding: .5em .65em;
+  cursor: pointer;
+}
+.geosuggest__item:hover,
+.geosuggest__item:focus {
+  background: #f5f5f5;
+}
+.geosuggest__item--active {
+  background: #267dc0;
+  color: #fff;
+}
+.geosuggest__item--active:hover,
+.geosuggest__item--active:focus {
+  background: #ccc;
+}
+
+
+/********************** Flights Table CSS ****************************************/
+
+.flight-options{
+	border: none;
+	.multi-leg{
+		background: #e0e0eb;
+	}
+
+	.single-leg:hover, .multi-leg:hover{
+		background: $selected-flight-row;
+	}
+
+	.top-border{
+		border-top: 1px solid black;
+	}
+
+	.bottom-border{
+		border-bottom: 1px solid black;
+	}
+
+	.selected-flight{
+		background-color: $selected-flight-row;
+	}
+}
+
+/*********************************** Borders ****************************************************/
+
+.border-top-1px{
+	border-top: 1px solid black
+}
+.border-bottom-1px{
+	border-bottom: 1px solid black
+}
+
+
