@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TabiV2</title>
+    <title>Tabi - Travel Planner</title>
     <%= csrf_meta_tags %>
-
 
     <%= stylesheet_link_tag    'react-select', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,11 +12,9 @@
 
     <%= stylesheet_link_tag    'font-awesome/css/font-awesome.min.css', media: 'all', 'data-turbolinks-track': 'reload' %>    
     <link href="https://fonts.googleapis.com/css?family=BioRhyme|Libre+Franklin:700i|Nunito+Sans" rel="stylesheet">
-    <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
-
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'webpack-bundle' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn-htcBCbG-7-a5NLKCY8ElUV7WGziTlU&libraries=places"></script>
   </head>
 
