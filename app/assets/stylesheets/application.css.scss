@@ -15,3 +15,17 @@
 
  /*@import "bootstrap-sprockets";*/
  @import "bootstrap";
+
+
+ .banner{
+ 	background-image: url('banner_background2.jpg'); 
+ 	background-repeat:no-repeat;
+ 	background-size:auto auto;
+ 	background-position: center; 
+ 	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+ 	-o-background-size: cover;
+ 	background-size: cover; 
+ 	// background-size: 100% 100%;
+ 	// min-height: 800px;
+}

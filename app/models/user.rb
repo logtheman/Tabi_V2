@@ -14,27 +14,6 @@ class User < ApplicationRecord
   has_many :trips
   has_many :transportations
 
-
-  # def self.from_omniauth(auth)
-  #     data = auth.info
-  #     user = User.where(:email => data["email"]).first
-  # 		logger.debug "auth: #{auth}"
-
-  #     # Uncomment the section below if you want users to be created if they don't exist
-  #     unless user
-  #         # Strip out the username form email
-  #         user = User.create(name: data[:info][:name],
-  #         	email: data[:info][:email],
-  #         	image_url: data[:info][:image],
-  #           password: Devise.friendly_token[0,20],
-  #           uid: data[:uid],
-  #           provider: data[:provider],
-  #         )
-  #     end
-  #     user
-  # end
-
-
   def self.from_omniauth(auth)
   	logger.debug "auth: #{auth}"
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
@@ -47,15 +26,6 @@ class User < ApplicationRecord
       user.save!
     end
   end
-
-  # def self.from_omniauth(auth)
-  # 	logger.debug "auth: #{auth}"
-  #   where(provider: auth[:provider], uid: auth[:uid]).first_or_create do |user|
-  #     user.name = auth[:info][:name]
-  #     user.email = auth[:info][:email]
-  #     user.image_url = auth[:info][:picture]
-  #   end
-  # end
 
 end
 

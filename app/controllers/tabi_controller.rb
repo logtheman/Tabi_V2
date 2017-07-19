@@ -1,6 +1,7 @@
 class TabiController < ApplicationController
+	layout "tabi"
+
 	def index
 	  @tabi_props = { name: "Stranger" }
-	  logger.debug "This is from debug#{@tabi_props}"
 	end
 end

@@ -7,6 +7,8 @@ const BootstrapModal = props => {
 		maxWidth: props.maxWidth,
 	};
 
+
+
 	const backdropStyle = props.backdrop
 		? "static-modal backdrop"
 		: "static-modal";
@@ -31,17 +33,21 @@ const BootstrapModal = props => {
 		);
 
 	return (
-		<div className={backdropStyle}>
-			<Modal.Dialog className="large" style={styles}>
-				{header}
+		<div className={backdropStyle} style={{margin: "0 auto"}}>
+			<div className="row">
+				<div className={props.columns}>
+					<Modal.Dialog className="large " style={styles}>
+						{header}
 
-				<Modal.Body className="pt-2">
-					{props.children}
-				</Modal.Body>
+						<Modal.Body className="pt-2">
+							{props.children}
+						</Modal.Body>
 
-				{props.footer}
+						{props.footer}
 
-			</Modal.Dialog>
+					</Modal.Dialog>
+				</div>
+			</div>
 		</div>
 	);
 };

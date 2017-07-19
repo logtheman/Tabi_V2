@@ -51,4 +51,12 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # for devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
+
+  ENV["GOOGLE_OAUTH_CLIENT_ID"]='234340228253-bufktq1b4ppll7g9uteb2uggmf3sup9i.apps.googleusercontent.com'
+
+  ENV["FACEBOOK_KEY"] = '242402819583006' 
+
 end

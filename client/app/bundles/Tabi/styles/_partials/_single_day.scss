@@ -1,0 +1,242 @@
+@import '../_variables'; // colors, fonts etc...
+@import './_layouts'; // responsive grid and media queries
+
+
+/********************** Single Day Container ****************************************/
+
+.single-day-container{
+	background-color: white;
+	min-height: 400px;
+	padding-left: 10px;
+
+	.bottom-border{
+		border-bottom: 1px solid #777;
+	}
+
+	.icon-offset{
+		padding-left: $icon-offset + $icon-size;
+	}
+
+	.timeline-header{
+		padding: {
+			top: 5px;
+			left: 2.5em;
+			bottom: 0px;
+		}
+	}
+
+	.timeline {
+	  position: relative;
+	  padding: 2em 0;
+
+
+	  .activity-name{
+	  	font-weight: 500;
+	  	color: $activity-name-color;
+	  	font-size: 1.2em;
+	  }
+
+	  .activity-time{
+	  	font-weight: bold;
+	  	color: black;
+	  	font-size: 1.1em;
+
+	  }
+
+	  &::before {
+	  	/* this is the vertical line */
+	  	content: '';
+	  	position: absolute;
+	  	top: 0;
+	  	left: $timeline-offset;
+	  	height: 100%;
+	  	width: 4px;
+	  	background: darken($background, 5%);
+	  }
+	  a{
+	  	color: black;
+	  	&:hover{
+	  		text-decoration: underline;
+	  	}
+	  }
+
+	  .timeline-row{
+	  	min-height: $timeline-row-height;
+	  }
+
+	  .food{	  	
+	  	background-color: $food-color;
+	  	border-bottom: 1.5px solid $food-border-color;
+	  	border-top: 1px solid $food-border-color;
+	  	padding-top: 8px;
+	  	&:hover{
+	  		background-color: $food-color-hover;
+	  	}	
+	  }
+
+	  .flight{
+	  	background-color: $flight-color;
+	  	border-bottom: 1.5px solid $flight-border-color;
+	  	border-top: 1px solid $flight-border-color;
+	  	// padding-top: 1em;
+	  	padding-top: 8px;
+
+	  	&:hover{
+	  		background-color: $flight-color-hover;
+	  	}	
+	  }
+
+	  .lodging{
+	  	background-color: $lodging-color;
+	  	border-bottom: 1.5px solid $lodging-border-color;
+	  	border-top: 1px solid $lodging-border-color;
+	  	padding-top: 0;
+	  	padding-bottom: 1em;
+	  	&:hover{
+	  		background-color: $lodging-color-hover;
+	  	}	
+	  }
+
+	  .activity{
+	  	background-color: $activity-color;
+	  	border-bottom: 1.5px solid $activity-border-color;
+	  	border-top: 1px solid $activity-border-color;
+	  	padding-top: 8px;
+
+	  	// padding-top: 1em;
+	  	&:hover{
+	  		background-color: $activity-color-hover;
+	  	}	
+	  }
+
+
+
+	}
+
+	.timeline-block {
+		position: relative;
+		margin: 2em 0;
+		font-size: $activity-font-size;
+
+		&.activity, &.lodging, &.flight, &.food{
+			min-height: $activity-min-height;
+			padding-top: 5px;
+
+		}
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@include MQ(L) {
+			margin: 4em 0;
+
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.timeline-content {
+		position: relative;
+		margin-left: $timeline-offset * 2;
+		
+		.row:first-child{
+			padding-left: 1em;
+		}
+
+	}
+
+
+	.timeline-activity-marker{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: $icon-size;
+		height: $icon-size;
+		margin-left: $icon-offset;
+		border-radius: 50%;
+		// border: 1px solid rgba(#fff, .5);
+		box-shadow: 0 0 0 4px white, inset 0 3px 0 rgba(#000, .08), 0 3px 0 4px rgba(#000, .10) ;
+	  z-index: 5;
+
+		i {
+
+			margin-left: 14px;
+			margin-top: 5px;
+			position: relative;
+			text-shadow: 0.5px 1px 0 grey;
+			color: white;
+
+		}
+
+		&.food {
+			background: $food-border-color;
+		}
+		&.flight {
+			background: $flight-border-color;
+			font-size: 1.3em;
+			i {
+				margin-left: 13px;	
+			}
+		}
+		&.activity {
+			background: $activity-border-color;
+			font-size: 1.3em;
+			i {
+				margin-left: 16px;	
+			}
+		}
+		&.lodging {
+			background: $lodging-border-color;
+			color: white;
+			top: 10px;
+			i {
+				margin-left: 13px;	
+				margin-top: 12px;
+			}
+		}
+
+	}
+
+
+
+	.day-header{
+		font-size: 1.5em;
+		color: #445;
+		border-bottom: 1px solid #CCC;
+		-webkit-box-shadow: 0px 2px 8px 1px rgba(94,94,94,0.19);
+		-moz-box-shadow: 0px 2px 8px 1px rgba(94,94,94,0.19);
+		box-shadow: 0px 2px 8px 1px rgba(94,94,94,0.19);
+		text-shadow: 0.5px 0.5px 0 grey;
+		.change-day{
+			.icon{
+				color: #eee;
+				text-shadow: 0.5px 0px 1 black;
+				&:hover{
+					color: #CCC;
+					text-shadow: 1.5px 1px 0 black;
+				}
+			}
+
+		}
+
+	}
+
+	@media(min-width: 900px){
+		.day-header {
+			font-size: 2.2em;
+		}
+
+	}
+
+}

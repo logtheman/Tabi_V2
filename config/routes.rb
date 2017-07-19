@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # devise_for :users
+	# resources :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
   get 'hello_world', to: 'hello_world#index'
 
   get 'index', to: 'tabi#index'

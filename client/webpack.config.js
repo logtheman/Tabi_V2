@@ -21,7 +21,7 @@ const config = {
       'es5-shim/es5-shim',
       'es5-shim/es5-sham',
       'babel-polyfill',
-      './app/bundles/HelloWorld/startup/registration',
+      './app/bundles/Tabi/startup/registration',
     ],
   },
 
@@ -57,6 +57,24 @@ const config = {
             sham: 'es5-shim/es5-sham',
           },
         },
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.scss$/,

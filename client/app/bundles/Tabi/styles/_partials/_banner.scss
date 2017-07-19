@@ -1,0 +1,72 @@
+@import '../_variables'; // colors, fonts etc...
+
+
+// Opening banner, title and entry point
+.banner{
+	//LOCATED IN APPLICATION.SCSS
+	// background-image: url('banner_background2.jpg'); 
+	// background-repeat:no-repeat;
+	// background-size:auto auto;
+	// background-position: center; 
+	// background-size: cover; 
+
+	.open-title{
+		font-size: 9em;
+		color:black;
+	}
+
+	.travel-date-inputs{
+		text-align:center
+	}
+	
+	.text-shadow{
+		text-shadow: 1.5px 1px 0 white;
+	}
+	.trip-dates{
+		font-size: 2em;
+
+		button{
+			border-radius: 5px;
+		}
+	}
+}
+
+
+.button-container{
+	margin-right: 3rem;
+	margin-left: 3rem;
+	.new-trip, .edit-trip, .explore-trips{
+		border-radius: 2px;
+		height: 3em;
+		background-color: white;
+	}
+
+	.new-trip, .lodging{
+		color: $lodging-border-color;
+		border-color: $lodging-border-color;
+		&:hover{
+			color: black;
+			background-color: $lodging-color;
+		}
+	}
+	.edit-trip, .food{
+		color: $food-border-color;
+		border-color: $food-border-color;
+		&:hover{
+			color: black;
+			background-color: $food-color;
+		}
+	}
+}
+
+@media(min-width: 733px){
+	.open-title{
+		font-size: 7em;
+		color:black;
+	}
+	.button-container{
+		margin-right: 10rem;
+		margin-left: 10rem;
+	}
+
+}

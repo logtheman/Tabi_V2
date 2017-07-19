@@ -5,10 +5,11 @@ import * as api from "../../utils/utils";
 import BootstrapModal from "../components/single_day_components/BootstrapModal_dc";
 import TripDatesForm from "../components/single_day_components/TripDatesForm_dc";
 import ModalHeader from "../components/single_day_components/ModalHeader_dc";
+import SignInForm from "../components/single_day_components/SignInForm_dc";
+import LandingPageChoices from "../components/single_day_components/LandingPageChoices_dc";
 
 import FlightForm from "./FlightForm_sc";
-import moment from 'moment';
-
+import moment from "moment";
 
 export default class MainPage extends React.Component {
 	constructor(props) {
@@ -19,7 +20,8 @@ export default class MainPage extends React.Component {
 			tripStartDate: moment(),
 			tripEndDate: moment(),
 			showFlightForm: null,
-
+			showLoginForm: false,
+			signedIn: false
 		};
 
 		this.handleAddStartDate = this.handleAddStartDate.bind(this);
@@ -29,86 +31,54 @@ export default class MainPage extends React.Component {
 		this.handleAddFlight = this.handleAddFlight.bind(this);
 		this.handleWindowSize = this.handleWindowSize.bind(this);
 		window.addEventListener("resize", this.handleWindowSize);
-
 	}
 
-	handleAddFlight(addFlight){
-		this.setState({showFlightForm: addFlight});
+	handleAddFlight(addFlight) {
+		this.setState({ showFlightForm: addFlight });
 	}
 
-	handleAddStartDate(e){
-		this.setState({tripStartDate: e});
+	handleAddStartDate(e) {
+		this.setState({ tripStartDate: e });
 	}
 
-	handleAddEndDate(e){
-		this.setState({tripEndDate: e});
+	handleAddEndDate(e) {
+		this.setState({ tripEndDate: e });
 	}
 
 	handleNewTrip() {
-		if(this.state.newTrip){
-			this.setState({ 
-				newTrip: !this.state.newTrip,
-				showFlightForm: null
-			});
-		}else{
-			this.setState({ newTrip: !this.state.newTrip });
+		if (this.state.signedIn) {
+			if (this.state.newTrip) {
+				this.setState({
+					newTrip: !this.state.newTrip,
+					showFlightForm: null
+				});
+			} else {
+				this.setState({ newTrip: !this.state.newTrip });
+			}
+		} else {
+			this.setState({ showLoginForm: !this.state.showLoginForm });
 		}
 	}
 
-	handleWindowSize(){
-		this.setState({windowHeight: window.innerHeight});
+	handleWindowSize() {
+		this.setState({ windowHeight: window.innerHeight });
 	}
 
 	render() {
-		const selectionButtons = (
-			<div className="container pt-3">
-				<div className="center-block button-container">
-					<div className="open-buttons ">
-						<button
-							type="button"
-							onClick={this.handleNewTrip}
-							className="btn btn-outline-primary btn-block new-trip mt-4"
-						>
-							<i className="fa fa-plus " aria-hidden="true" />
-							{" "}Plan a trip
-						</button>
-						<button
-							type="button"
-							className="btn btn-outline-success btn-block edit-trip mt-3"
-						>
-							<i className="fa fa-pencil-square-o " aria-hidden="true" />
-							{" "}Edit exiting trip
-						</button>
-						<button
-							type="button"
-							className="btn btn-outline-danger btn-block explore-trips mt-3"
-						>
-							<i className="fa fa-eye" aria-hidden="true" />
-							{" "}Explore trips
-						</button>
-					</div>
-				</div>
-
-			</div>
-		);
-
-		const displayForm = this.state.showFlightForm ? (
-				<FlightForm
+		const displayForm = this.state.showFlightForm
+			? <FlightForm
 					titleChange={this.handleModalHeaderChange}
 					onClose={this.handleNewTrip}
 					departureDate={this.state.tripStartDate}
 					returnDate={this.state.tripEndDate}
 				/>
-			) : (
-				<TripDatesForm
+			: <TripDatesForm
 					handleAddStartDate={this.handleAddStartDate}
 					handleAddEndDate={this.handleAddEndDate}
 					handleAddFlight={this.handleAddFlight}
 					tripStartDate={this.state.tripStartDate}
 					tripEndDate={this.state.tripEndDate}
-
-				/>
-			);
+				/>;
 
 		const displayModal = this.state.newTrip
 			? <BootstrapModal
@@ -116,20 +86,20 @@ export default class MainPage extends React.Component {
 					topMargin={"100px"}
 					backdrop={true}
 					header={
-						<ModalHeader
-							type={'new trip'}
-							onClose={this.handleNewTrip} > 
+						<ModalHeader type={"new trip"} onClose={this.handleNewTrip}>
 							<div className="mt-1 mb-1">
 								<b>New Trip</b>
 								<hr />
 							</div>
-						 </ModalHeader>
+						</ModalHeader>
 					}
 				>
-					{displayForm} 
+					{displayForm}
 				</BootstrapModal>
 			: null;
-		// const showOptions = this.state.newTrip ? dateRange : selectionButtons;
+
+		const pageChoices = this.state.showLoginForm ? <SignInForm /> : 
+		<LandingPageChoices handleNewTrip={this.handleNewTrip} />;
 
 		return (
 			<div
@@ -140,7 +110,7 @@ export default class MainPage extends React.Component {
 					<h1 className="display-1"><strong>Tabi</strong></h1>
 					<h3 className="mt-3 text-shadow">Plan Your Journey</h3>
 				</div>
-				{selectionButtons}
+				{pageChoices}
 				{displayModal}
 
 			</div>

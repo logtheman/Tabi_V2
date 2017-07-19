@@ -49,7 +49,7 @@ class SingleDay extends React.Component {
 	}
 
 
-	componentWillMount(){
+	componentDidMount(){
 		window.addEventListener('scroll', _.throttle(this.onScrollY, 500));
 
 	}

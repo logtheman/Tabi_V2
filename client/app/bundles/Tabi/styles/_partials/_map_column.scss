@@ -1,0 +1,37 @@
+@import '../_variables'; // colors, fonts etc...
+
+/********************** Single Day Map Styles ****************************************/
+
+
+	.map-column{
+		min-height: 500px;
+		transition-property: margin;
+		transition-duration: 0.2s;
+		// transition-delay: 0.1s;
+		transition-timing-function: linear;
+
+		.add-activity-buttons{
+			border: 2px solid $add-activity-border;
+			background-color: $add-activity-background;
+			border-radius: 10px;
+			margin: 1em;
+			// position: fixed;
+			// top: $navbar-height;
+			// right: 0;
+			// z-index: 5;
+		}
+
+		@media(min-width: 900px){
+
+		}
+		.single-day-map{
+			height: 60%;
+			// margin-top: $activity-buttons-height + 20;
+			margin-right: 10px;
+			margin-left: 10px;
+			border: 1px solid black;
+			// min-height: 500px - $navbar-height - 20;
+
+		}
+
+	}

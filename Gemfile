@@ -5,12 +5,20 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# for setting up enviroment variables
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'bourbon'
+# for user auth
+gem 'devise'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
 
-
+# for styles
 gem 'bootstrap', '~> 4.0.0.alpha6'
-
+# for react
 gem "react_on_rails", "8.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
