@@ -1,5 +1,5 @@
 import React from "react";
-import * as api from "../../../utils/utils";
+import * as api from "../../../../utils/utils";
 
 const FlightResultsList = props => {
 	const tableBody = props.flights

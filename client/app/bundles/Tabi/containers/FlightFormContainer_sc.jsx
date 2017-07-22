@@ -1,17 +1,11 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import VirtualizedSelect from "react-virtualized-select";
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
 
-import 'react-datepicker/dist/react-datepicker.css';
-import "react-select/dist/react-select.css";
-import "react-virtualized/styles.css";
-import "react-virtualized-select/styles.css";
+
 import createFilterOptions from "react-select-fast-filter-options";
-import FlightResultsList from "../components/single_day_components/FlightResultsList_dc";
-import DisplaySelectedFlightsTable from "../components/single_day_components/DisplaySelectedFlightsTable_dc";
+import FlightResultsList from "../components/single_day_components/flightForm/FlightResultsList_dc";
+import DisplaySelectedFlightsTable from "../components/single_day_components/flightForm/DisplaySelectedFlightsTable_dc";
+import FlightForm from "../components/single_day_components/flightForm/FlightForm_dc";
 import SpinnerButton from "../components/single_day_components/SpinnerButton_dc";
 import SimpleMap from "./SimpleMap_sc";
 import * as api from "../../utils/utils";
@@ -31,7 +25,7 @@ one slice. There can be multiple segments, which respresent flights with connect
 ***************************************************************************************************/
 
 // const LodgingForm = (props) =>{
-export default class FlightForm extends React.Component {
+export default class FlightFormContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -73,6 +67,7 @@ export default class FlightForm extends React.Component {
 		this.handleAirlines = this.handleAirlines.bind(this);
 		this.handleSearchIndex = this.handleSearchIndex.bind(this);
 		this.handleChangeSlice = this.handleChangeSlice.bind(this);
+		this.handleActiveClass = this.handleActiveClass.bind(this);
 	}
 
 	componentWillMount() {
@@ -176,7 +171,7 @@ export default class FlightForm extends React.Component {
 				refundable: false
 			}
 		};
-		console.log(flightData);
+		console.log("flightdata:", flightData);
 		this.setState({isloading: true});
 		const response = api
 			.post(this.state.QPXURL, flightData, "", "internal")
@@ -243,7 +238,6 @@ export default class FlightForm extends React.Component {
 	}
 
 	render() {
-		console.log("depature: ", this.props.departureDate);
 		const options = this.state.airlines;
 		const filterOptions = createFilterOptions({ options });
 
@@ -287,132 +281,28 @@ export default class FlightForm extends React.Component {
 			 	Search Flights </SpinnerButton>);
 
 		return (
-			<div>
-				<form>
-
-					<div className="row">
-						<div className="col-md-6">	
-							<div className="form-group">
-								<label htmlFor="departureDate" style={{width:"100%"}}>
-									Leaving on
-								</label>
-
-								<DatePicker
-								    selected={this.state.departureDate}
-								    selectsStart
-								    startDate={this.state.departureDate}
-								    endDate={this.state.returnDate}
-								    onChange={this.handleChangeDepartureDate}
-								/>
-							</div>
-						</div>
-						<div className="col-md-6">	
-							<div className="form-group" >
-								<label htmlFor="returnDate" style={{width:"100%"}}>
-									Returning on
-								</label>
-								<DatePicker
-								    selected={this.state.returnDate}
-								    selectsEnd
-								    startDate={this.state.departureDate}
-								    endDate={this.state.returnDate}
-								    onChange={this.handleChangeReturnDate}
-								/>
-							</div>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-md-12	">
-							<div className="form-group">
-								<label htmlFor="origin">Depaturing from</label>
-								<VirtualizedSelect
-									filterOptions={this.state.airportFilterOptions}
-									value={this.state.depatureAirport}
-									options={this.state.airports}
-									onChange={this.handleDepatureAirport}
-									className="select-input"
-								/>
-							</div>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-md-12">
-							<div className="form-group">
-								<label htmlFor="destination">Going to</label>
-								<VirtualizedSelect
-									filterOptions={this.state.airportFilterOptions}
-									value={this.state.destinationAirport}
-									options={this.state.airports}
-									onChange={this.handleDestinationAirport}
-									className="select-input"
-								/>
-							</div>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-md-12">
-							<div className="form-group">
-								<label htmlFor="airlines">Airlines 
-									<span className="optional-label"> 
-										 {' '}(optional) 
-									</span>
-								</label>
-								<VirtualizedSelect
-									filterOptions={filterOptions}
-									value={this.state.selectedAirlines}
-									options={options}
-									onChange={this.handleAirlines}
-									className="select-input"
-								/>
-							</div>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-md-12">
-							<div className="form-group">
-								<label htmlFor="timeOfDay">Time of Day
-									<span className="optional-label"> 
-										 {' '}(optional)
-									</span>
-								</label><br />
-							<div className="btn-group" data-toggle="buttons" >
-							  <label className={this.handleActiveClass('00:00')}>
-							    <input type="radio" 
-							    	onClick={() => this.handleTimeOfDayChange('any')} 
-							    	/> Any Time
-							  </label>
-							  <label className={this.handleActiveClass('00:01')}>
-							    <input type="radio" 
-							    	onClick={() => this.handleTimeOfDayChange('morning')} 
-
-							    	/> Morning
-							  </label>
-							  <label className={this.handleActiveClass('12:00')}>
-							    <input type="radio" onClick={() => this.handleTimeOfDayChange('afternoon')} /> Afternoon
-							  </label>
-							  <label className={this.handleActiveClass('17:00')}>
-							    <input type="radio" onClick={() => this.handleTimeOfDayChange('evening')} /> Evening
-							  </label>
-							</div>
-						</div>
-					</div>
-				</div>
-					{results}
-
-					{displaySelectedFlights}
-					<Modal.Footer>
-						{flightSearchButton}
-						<button
-							type="close"
-							className="btn btn-secondary"
-							onClick={() => this.props.onClose("")}
-						>
-							Close
-						</button>
-					</Modal.Footer>
-
-				</form>
-			</div>
+			 <FlightForm 
+			 	departureDate={this.state.departureDate} 
+			 	returnDate={this.state.returnDate} 
+			 	handleChangeDepartureDate={this.handleChangeDepartureDate}
+			 	handleChangeReturnDate={this.handleChangeReturnDate}
+				airportFilterOptions={this.airportFilterOptions}
+				filterOptions={filterOptions}
+				depatureAirport={this.state.depatureAirport} 
+				airports={this.state.airports} 
+				handleDepatureAirport={this.handleDepatureAirport}
+				destinationAirport={this.state.destinationAirport}
+				handleDestinationAirport={this.handleDestinationAirport}
+				selectedAirlines={this.state.selectedAirlines}
+				options={options}
+				results={results}
+				handleAirlines={this.handleAirlines}
+				handleActiveClass={this.handleActiveClass}
+				handleTimeOfDayChange={this.handleTimeOfDayChange}
+				onClose={this.props.onClose}
+				displaySelectedFlights={displaySelectedFlights}
+				flightSearchButton={flightSearchButton}
+			/>
 		);
 	}
 }

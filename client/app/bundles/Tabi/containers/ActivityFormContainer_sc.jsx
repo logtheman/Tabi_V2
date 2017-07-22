@@ -4,7 +4,7 @@ import SimpleMap from "./SimpleMap_sc";
 import { Modal } from "react-bootstrap";
 
 // const LodgingForm = (props) =>{
-export default class FoodForm extends React.Component {
+export default class ActivityFormContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

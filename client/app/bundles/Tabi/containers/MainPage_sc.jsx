@@ -8,7 +8,7 @@ import ModalHeader from "../components/single_day_components/ModalHeader_dc";
 import SignInForm from "../components/single_day_components/SignInForm_dc";
 import LandingPageChoices from "../components/single_day_components/LandingPageChoices_dc";
 
-import FlightForm from "./FlightForm_sc";
+import FlightFormContainer from "./FlightFormContainer_sc";
 import moment from "moment";
 
 export default class MainPage extends React.Component {
@@ -66,7 +66,7 @@ export default class MainPage extends React.Component {
 
 	render() {
 		const displayForm = this.state.showFlightForm
-			? <FlightForm
+			? <FlightFormContainer
 					titleChange={this.handleModalHeaderChange}
 					onClose={this.handleNewTrip}
 					departureDate={this.state.tripStartDate}

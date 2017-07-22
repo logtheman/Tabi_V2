@@ -1,9 +1,9 @@
 import React from "react";
 import { Radio, FormGroup, Button } from "react-bootstrap";
 import LodgingForm from "./LodgingForm_sc";
-import FoodForm from "./FoodForm_sc";
-import ActivityForm from "./ActivityForm_sc";
-import FlightForm from "./FlightForm_sc";
+import FoodFormContainer from "./FoodFormContainer_sc";
+import ActivityFormContainer from "./ActivityFormContainer_sc";
+import FlightFormContainer from "./FlightFormContainer_sc";
 import moment from 'moment';
 
 
@@ -72,7 +72,7 @@ export default class PlannerForm extends React.Component {
 			case "food":
 				if (this.state.subType) {
 					formContent = (
-						<FoodForm
+						<FoodFormContainer
 							onClose={this.props.onClose}
 							foodType={this.state.subType}
 						/>
@@ -102,7 +102,7 @@ export default class PlannerForm extends React.Component {
 				break;
 			case "activity":
 				formContent = (
-					<ActivityForm
+					<ActivityFormContainer
 						onClose={this.props.onClose}
 						activityType={this.state.subType}
 						submitButton={"Add Activity"}
@@ -111,7 +111,7 @@ export default class PlannerForm extends React.Component {
 				break;
 			default:
 				formContent = (
-					<FlightForm
+					<FlightFormContainer
 						onClose={this.props.onClose}
 						activityType={this.state.subType}
 						submitButton={"Search Flights"}
@@ -124,11 +124,9 @@ export default class PlannerForm extends React.Component {
 
 		return (
 			<div className="pb-2">
-
 				{subTypeContent}
 				<br />
 				{formContent}
-
 			</div>
 		);
 	}
