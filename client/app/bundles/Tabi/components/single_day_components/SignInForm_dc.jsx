@@ -46,6 +46,7 @@ const SignInForm = props => {
 							type="submit"
 							className="btn btn-primary"
 							style={style.submitButton}
+							onClick={props.toggleSignIn}
 						>
 							Sign In
 						</button>
@@ -65,6 +66,7 @@ const SignInForm = props => {
 					<a
 						className="btn btn-social btn-facebook mb-2"
 						style={style.socialButtons}
+						onClick={props.toggleSignIn}
 					>
 						<span className="fa fa-facebook" /> Sign in with Facebook
 					</a>
@@ -72,6 +74,7 @@ const SignInForm = props => {
 					<a
 						className="btn btn-social btn-twitter mb-2"
 						style={style.socialButtons}
+						onClick={props.toggleSignIn}
 					>
 						<span className="fa fa-twitter" />
 						Sign in with Twitter
@@ -80,6 +83,7 @@ const SignInForm = props => {
 					<a
 						className="btn btn-social btn-google mb-2"
 						style={style.socialButtons}
+						onClick={props.toggleSignIn}
 					>
 						<span className="fa fa-google" /> Sign in with Google{" "}
 					</a>
