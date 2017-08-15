@@ -6,14 +6,14 @@ import {simpleMarkerStyle, SimpleMarkerIcon} from '../../../utils/marker_helpers
 
 const SimpleMarker = (props) => {
 
-	const name = props.name || props.activity;
-	const style = simpleMarkerStyle(props);
+  const name = props.name || props.activity;
+  const style = simpleMarkerStyle(props);
 
-	return(
-		<div style={style}>
-		   <SimpleMarkerIcon type={props.type} />
-		</div>
-	);
+  return(
+    <div style={style}>
+       <SimpleMarkerIcon type={props.type} />
+    </div>
+  );
 }
 
 export default SimpleMarker;
