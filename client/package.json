@@ -1,5 +1,8 @@
 {
   "name": "tabi_v2",
+  "engines": {
+    "node": "6.9.4"
+  },
   "private": true,
   "scripts": {
     "build:test": "NODE_ENV=test webpack --config webpack.config.js",
@@ -47,7 +50,7 @@
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
     "webpack-manifest-plugin": "^1.1.0"
-    
+
   },
   "devDependencies": {}
 }
