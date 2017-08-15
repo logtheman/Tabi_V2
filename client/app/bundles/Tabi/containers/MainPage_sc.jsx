@@ -30,7 +30,8 @@ export default class MainPage extends React.Component {
 		this.handleNewTrip = this.handleNewTrip.bind(this);
 		this.handleAddFlight = this.handleAddFlight.bind(this);
 		this.handleWindowSize = this.handleWindowSize.bind(this);
-		window.addEventListener("resize", this.handleWindowSize);
+		this.toggleSignIn = this.toggleSignIn.bind(this);
+
 	}
 
 	handleAddFlight(addFlight) {
@@ -56,12 +57,20 @@ export default class MainPage extends React.Component {
 				this.setState({ newTrip: !this.state.newTrip });
 			}
 		} else {
+			console.log("stop showing form");
 			this.setState({ showLoginForm: !this.state.showLoginForm });
 		}
 	}
 
 	handleWindowSize() {
 		this.setState({ windowHeight: window.innerHeight });
+	}
+
+	toggleSignIn(){
+		console.log("toggle signedIn");
+		this.setState({ signedIn: !this.state.signedIn });
+		this.handleNewTrip();
+
 	}
 
 	render() {
@@ -98,7 +107,7 @@ export default class MainPage extends React.Component {
 				</BootstrapModal>
 			: null;
 
-		const pageChoices = this.state.showLoginForm ? <SignInForm /> : 
+		const pageChoices = this.state.showLoginForm ? <SignInForm toggleSignIn={this.toggleSignIn}/> : 
 		<LandingPageChoices handleNewTrip={this.handleNewTrip} />;
 
 		return (
