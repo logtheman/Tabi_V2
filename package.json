@@ -2,14 +2,11 @@
   "name": "tabi_v2",
   "private": true,
   "dependencies": {
-    "bourbon": "^4.3.4",
-    "google-map-react": "^0.24.0",
-    "radium": "^0.19.1"
+
   },
   "scripts": {
     "postinstall": "cd client && yarn install"
   },
   "devDependencies": {
-    "image-webpack-loader": "^3.3.1"
   }
 }
